@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    kotlin("kapt")
 }
 
 android {
@@ -40,7 +41,8 @@ android {
 
 dependencies {
 
-
+    implementation(libs.glide)
+    kapt(libs.glide.compiler)
     implementation(libs.androidx.work.runtime.ktx)
 
     implementation(libs.okhttp)

@@ -15,19 +15,19 @@ class StudentGradesViewModel : ViewModel() {
 
     private fun loadGrades() {
         _grades.value = listOf(
-            StudentGrade("Alice", "Math", "A"),
-            StudentGrade("Bob", "History", "B+"),
-            StudentGrade("Charlie", "Science", "A-"),
-            StudentGrade("Dana", "English", "B"),
-            StudentGrade("Eve", "Physics", "A+"),
-            StudentGrade("Alice", "Math", "A"),
-            StudentGrade("Bob", "History", "B+"),
-            StudentGrade("Charlie", "Science", "A-"),
-            StudentGrade("Dana", "English", "B"),
-            StudentGrade("Alice", "Math", "A"),
-            StudentGrade("Bob", "History", "B+"),
-            StudentGrade("Charlie", "Science", "A-"),
-            StudentGrade("Dana", "English", "B")
+            StudentGrade("Seminar", "Algebra 2", "A"),
+            StudentGrade("Laborator", "Structuri de date", "B+"),
+            StudentGrade("Seminar", "Analiza 2", "A-"),
+            StudentGrade("Seminar", "Geometrie 2", "B"),
+            StudentGrade("Laborator", "OOP", "A+"),
+            StudentGrade("Laborator", "Structuri de date", "A"),
+            StudentGrade("Laborator", "OOP", "B+"),
+            StudentGrade("Seminar", "Algebra 2", "A-"),
+            StudentGrade("Laborator", "OOP", "B"),
+            StudentGrade("Seminar", "Geometrie 2", "A"),
+            StudentGrade("Laborator", "OOP", "B+"),
+            StudentGrade("Laborator", "Structuri de date", "A-"),
+            StudentGrade("Seminar", "Analiza 2", "B")
         )
     }
 }

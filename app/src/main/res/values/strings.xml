@@ -13,4 +13,5 @@
     <string name="menu_privacy_policy">Privacy Policy</string>
     <string name="menu_credentials">Credentials</string>
     <string name="menu_rooms">Rooms</string>
+    <string name="article_image">Image</string>
 </resources>
