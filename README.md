@@ -78,7 +78,7 @@ workmanager = "2.10.0"
 ## 📦 Installation
 Clone the repo:
 ```bash
-git clone https://github.com/lates-codrin/Dev_MyScheduler.git
+git clone https://github.com/lates-codrin/MyScheduler.git
 ```
 Open in Android Studio
 
