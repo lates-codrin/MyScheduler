@@ -15,19 +15,19 @@ class StudentGradesViewModel : ViewModel() {
 
     private fun loadGrades() {
         _grades.value = listOf(
-            StudentGrade("Seminar", "Algebra 2", "A"),
-            StudentGrade("Laborator", "Structuri de date", "B+"),
-            StudentGrade("Seminar", "Analiza 2", "A-"),
-            StudentGrade("Seminar", "Geometrie 2", "B"),
-            StudentGrade("Laborator", "OOP", "A+"),
-            StudentGrade("Laborator", "Structuri de date", "A"),
-            StudentGrade("Laborator", "OOP", "B+"),
-            StudentGrade("Seminar", "Algebra 2", "A-"),
-            StudentGrade("Laborator", "OOP", "B"),
-            StudentGrade("Seminar", "Geometrie 2", "A"),
-            StudentGrade("Laborator", "OOP", "B+"),
-            StudentGrade("Laborator", "Structuri de date", "A-"),
-            StudentGrade("Seminar", "Analiza 2", "B")
+            StudentGrade("Seminar", "Algebra 2", "10"),
+            StudentGrade("Laborator", "Structuri de date", "9"),
+            StudentGrade("Seminar", "Analiza 2", "10"),
+            StudentGrade("Seminar", "Geometrie 2", "9"),
+            StudentGrade("Laborator", "OOP", "10"),
+            StudentGrade("Laborator", "Structuri de date", "10"),
+            StudentGrade("Laborator", "OOP", "9"),
+            StudentGrade("Seminar", "Algebra 2", "10"),
+            StudentGrade("Laborator", "OOP", "9"),
+            StudentGrade("Seminar", "Geometrie 2", "10"),
+            StudentGrade("Laborator", "OOP", "9"),
+            StudentGrade("Laborator", "Structuri de date", "10"),
+            StudentGrade("Seminar", "Analiza 2", "9")
         )
     }
 }
