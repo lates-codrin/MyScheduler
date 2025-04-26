@@ -3,7 +3,7 @@
 </p>
 
 
-## [!] Notice: If you want to contribute, please read below. As of now, anyone is free to open any issue. 👍
+### [!] Notice: If you want to contribute, please read below. As of now, anyone is free to open any issue. 👍
 # 📱 MyScheduler
 
 **MyScheduler** is a sleek, Kotlin-based Android app designed to enhance university life. It fetches real-time academic information like schedules, campus room locations, news, and more — all powered by a robust FastAPI backend.
