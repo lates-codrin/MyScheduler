@@ -50,7 +50,7 @@ class ScheduleAdapter(private var scheduleList: List<ScheduleItem>) :
 
     fun updateSchedule(newList: List<ScheduleItem>) {
         scheduleList = newList
-        notifyDataSetChanged() // Refresh RecyclerView
+        notifyDataSetChanged()
     }
 }
 

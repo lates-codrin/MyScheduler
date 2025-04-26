@@ -7,19 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dev_myscheduler.databinding.FragmentHomeBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import okhttp3.Call
+import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-import okhttp3.Callback
 import org.json.JSONArray
-import org.json.JSONObject
 import java.io.IOException
 
 class HomeFragment : Fragment() {
@@ -72,7 +67,6 @@ class HomeFragment : Fragment() {
                         }
 
                         activity?.runOnUiThread {
-                            // Set the adapter with the articles data
                             binding.newsRecyclerView.adapter = NewsAdapter(articles) { url ->
                                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                                 startActivity(intent)

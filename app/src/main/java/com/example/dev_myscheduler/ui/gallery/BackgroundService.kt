@@ -29,8 +29,8 @@ data class ApiResponse(
 class BackgroundService : Service() {
 
     private val handler = Handler()
-    private val delayMin = 10000L // 10 seconds
-    private val delayMax = 20000L // 20 seconds
+    private val delayMin = 10000L // 10 s
+    private val delayMax = 20000L // 20 s
     private var previousTimestamp: String? = null
     private val client = OkHttpClient()
 

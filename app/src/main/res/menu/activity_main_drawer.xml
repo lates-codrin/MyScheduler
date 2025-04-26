@@ -25,10 +25,6 @@
             android:icon="@drawable/outline_home_work_24"
             android:title="@string/menu_rooms" />
 
-
-
-
-
     </group>
 
     <group android:checkableBehavior="single" android:id="@+id/settings">

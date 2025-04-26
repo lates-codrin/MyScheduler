@@ -1,47 +1,48 @@
 package com.example.dev_myscheduler.ui.slideshow
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dev_myscheduler.R
+import com.example.dev_myscheduler.network.StudentGrade
 
-data class StudentGrade(
-    val name: String,
-    val subject: String,
-    val grade: String
-)
+class GradesAdapter(private var grades: List<StudentGrade>) :
+    RecyclerView.Adapter<GradesAdapter.GradeViewHolder>() {
 
-class StudentGradeAdapter(private var studentGrades: List<StudentGrade>) :
-    RecyclerView.Adapter<StudentGradeAdapter.StudentGradeViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentGradeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GradeViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_logs, parent, false)
-        return StudentGradeViewHolder(view)
+            .inflate(R.layout.item_grade, parent, false)
+        return GradeViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: StudentGradeViewHolder, position: Int) {
-        holder.bind(studentGrades[position])
+    override fun onBindViewHolder(holder: GradeViewHolder, position: Int) {
+        holder.bind(grades[position])
+        Log.d("GradesAdapter", "Binding grade: ${grades[position]}")
     }
 
-    override fun getItemCount(): Int = studentGrades.size
+    override fun getItemCount(): Int = grades.size
 
-    fun updateGrades(newGrades: List<StudentGrade>) {
-        studentGrades = newGrades
+    fun updateGrades(newGrades: List<StudentGrade>?) {
+        if (newGrades != null) {
+            grades = newGrades
+            Log.d("GradesAdapter", "Updated grades list: $grades")
+        }
         notifyDataSetChanged()
     }
 
-    inner class StudentGradeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val nameText: TextView = view.findViewById(R.id.textViewStudentName)
-        private val subjectText: TextView = view.findViewById(R.id.textViewSubject)
-        private val gradeText: TextView = view.findViewById(R.id.textViewGrade)
+    inner class GradeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val disciplineText: TextView = itemView.findViewById(R.id.textViewDiscipline)
+        private val gradeText: TextView = itemView.findViewById(R.id.textViewGrade)
+        private val creditsText: TextView = itemView.findViewById(R.id.textViewCredits)
 
-        fun bind(student: StudentGrade) {
-            nameText.text = student.name
-            subjectText.text = student.subject
-            gradeText.text = student.grade
+        fun bind(grade: StudentGrade) {
+            disciplineText.text = "Disciplina: ${grade.disciplina}"
+            gradeText.text = "Nota: ${grade.nota}"
+            creditsText.text = "An studiu: ${grade.anStudiu}"
+            Log.d("GradesAdapter", "Binding grade: ${grade.disciplina} - ${grade.nota}")
         }
     }
 }
