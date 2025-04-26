@@ -1,4 +1,4 @@
-![MyScheduler Mockup Image](https://i.imgur.com/w0GCwPS.png)
+![MyScheduler Mockup Image](https://i.imgur.com/w0GCwPS.png=250x250))
 
 
 # 📱 MyScheduler
