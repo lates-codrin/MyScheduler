@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/w0GCwPS.png" width="200" height="200" alt="MyScheduler Mockup Image"/>
+<img src="https://i.imgur.com/w0GCwPS.png" width="300" height="500" alt="MyScheduler Mockup Image" display="block"/>
 
 # 📱 MyScheduler
 
