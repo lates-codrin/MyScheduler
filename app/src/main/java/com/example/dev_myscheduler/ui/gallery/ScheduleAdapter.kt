@@ -3,54 +3,55 @@ package com.example.dev_myscheduler.ui.gallery
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dev_myscheduler.R
-import com.google.gson.annotations.SerializedName
+import com.example.dev_myscheduler.databinding.ItemScheduleBinding
 
-data class ScheduleItem(
-    @SerializedName("Ziua") val ziua: String,
-    @SerializedName("Orele") val orele: String,
-    @SerializedName("Sala") val sala: String,
-    @SerializedName("Tipul") val tipul: String,
-    @SerializedName("Disciplina") val disciplina: String,
-    @SerializedName("CD") val cd: String
-)
-
-
-class ScheduleAdapter(private var scheduleList: List<ScheduleItem>) :
-    RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>() {
-
-    class ScheduleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val dayTextView: TextView = view.findViewById(R.id.textViewDay)
-        val timeTextView: TextView = view.findViewById(R.id.textViewTime)
-        val roomTextView: TextView = view.findViewById(R.id.textViewRoom)
-        val typeTextView: TextView = view.findViewById(R.id.textViewType)
-        val courseTextView: TextView = view.findViewById(R.id.textViewCourse)
-        val professorTextView: TextView = view.findViewById(R.id.textViewProfessor)
-    }
+class ScheduleAdapter : ListAdapter<ScheduleItem, ScheduleAdapter.ScheduleViewHolder>(ScheduleDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_schedule, parent, false)
-        return ScheduleViewHolder(view)
+        val binding = ItemScheduleBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return ScheduleViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        val scheduleItem = scheduleList[position]
-        holder.dayTextView.text = scheduleItem.ziua
-        holder.timeTextView.text = scheduleItem.orele
-        holder.roomTextView.text = "Room: ${scheduleItem.sala}"
-        holder.typeTextView.text = "Type: ${scheduleItem.tipul}"
-        holder.courseTextView.text = scheduleItem.disciplina
-        holder.professorTextView.text = "${scheduleItem.cd}"
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount() = scheduleList.size
+    class ScheduleViewHolder(private val binding: ItemScheduleBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    fun updateSchedule(newList: List<ScheduleItem>) {
-        scheduleList = newList
-        notifyDataSetChanged() // Refresh RecyclerView
+        fun bind(item: ScheduleItem) {
+            with(binding) {
+                textViewDay.text = item.day.orEmpty()
+                textViewTime.text = item.hour.orEmpty()
+                textViewRoom.text = item.room?.let { "Room: $it" }.orEmpty()
+                textViewCourse.text = item.subject.orEmpty()
+                textViewProfessor.text = item.professor?.let { "Prof: $it" }.orEmpty()
+                textViewType.text = item.type.orEmpty()
+                textViewGroup.text = item.group?.let { "Group: $it" }.orEmpty()
+
+                // Set visibility based on data
+                textViewType.visibility = if (item.type.isNullOrEmpty()) View.GONE else View.VISIBLE
+                textViewGroup.visibility = if (item.group.isNullOrEmpty()) View.GONE else View.VISIBLE
+            }
+        }
+    }
+
+    class ScheduleDiffCallback : DiffUtil.ItemCallback<ScheduleItem>() {
+        override fun areItemsTheSame(oldItem: ScheduleItem, newItem: ScheduleItem): Boolean {
+            return oldItem.day == newItem.day &&
+                    oldItem.hour == newItem.hour &&
+                    oldItem.subject == newItem.subject
+        }
+
+        override fun areContentsTheSame(oldItem: ScheduleItem, newItem: ScheduleItem): Boolean {
+            return oldItem == newItem
+        }
     }
 }
-

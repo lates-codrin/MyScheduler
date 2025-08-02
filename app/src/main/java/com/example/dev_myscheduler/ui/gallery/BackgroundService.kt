@@ -16,16 +16,11 @@ import kotlin.jvm.java
 import kotlin.ranges.random
 
 data class ApiResponse(
-    val Grupa: String,
-    val Message: String,
-
-    @SerializedName("Ultima verificare")
-    val UltimaVerificare: String,
-
+    val Grupa: Int,
     val Orar: List<ScheduleItem>,
-    val Code: Int
+    val Code: Int,
+    val UltimaVerificare: String = ""
 )
-
 class BackgroundService : Service() {
 
     private val handler = Handler()
@@ -82,7 +77,6 @@ class BackgroundService : Service() {
                     if (apiResponse.UltimaVerificare != previousTimestamp) {
                         previousTimestamp = apiResponse.UltimaVerificare
                         saveScheduleData(apiResponse.Orar)
-                        showNotification(apiResponse.Message)
                     }
                 }
             }

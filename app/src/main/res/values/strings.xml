@@ -14,4 +14,7 @@
     <string name="menu_credentials">Credentials</string>
     <string name="menu_rooms">Rooms</string>
     <string name="article_image">Image</string>
+    <string name="empty_schedule_message">No data</string>
+    <string name="select_group">No data</string>
+    <string name="empty_schedule_icon">No data</string>
 </resources>
