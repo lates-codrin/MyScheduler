@@ -8,14 +8,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.dev_myscheduler.databinding.FragmentPrivacyBinding
-import com.example.dev_myscheduler.ui.privacy_policy.PrivacyViewModel
 
 class PrivacyFragment : Fragment() {
 
     private var _binding: FragmentPrivacyBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(

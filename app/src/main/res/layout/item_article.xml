@@ -12,7 +12,6 @@
         android:orientation="horizontal"
         android:padding="12dp">
 
-        <!-- Centered ImageView -->
         <ImageView
             android:id="@+id/articleImage"
             android:layout_width="100dp"
@@ -22,7 +21,6 @@
             android:visibility="gone"
             android:layout_marginEnd="12dp" />
 
-        <!-- Vertical layout for text -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"

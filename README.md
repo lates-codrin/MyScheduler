@@ -1,3 +1,10 @@
+<p align="center">
+  <img src="https://i.imgur.com/w0GCwPS.png" width="300" height="500" alt="MyScheduler Mockup Image"/>
+</p>
+
+
+### [!] Notice
+- If you want to contribute, please read below. As of **26 April 2025**, anyone is free to open any issue. 👍
 # 📱 MyScheduler
 
 **MyScheduler** is a sleek, Kotlin-based Android app designed to enhance university life. It fetches real-time academic information like schedules, campus room locations, news, and more — all powered by a robust FastAPI backend.

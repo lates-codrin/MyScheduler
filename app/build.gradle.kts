@@ -40,7 +40,10 @@ android {
 }
 
 dependencies {
+    implementation(libs.retrofit)
+    implementation(libs.gson.converter)
 
+    implementation("com.google.android.play:integrity:1.4.0")
     implementation(libs.glide)
     kapt(libs.glide.compiler)
     implementation(libs.androidx.work.runtime.ktx)

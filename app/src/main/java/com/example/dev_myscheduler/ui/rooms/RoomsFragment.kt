@@ -1,31 +1,23 @@
 package com.example.dev_myscheduler.ui.rooms
 
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dev_myscheduler.databinding.FragmentRoomsBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import okhttp3.Call
+import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-import okhttp3.Callback
 import org.json.JSONArray
-import org.json.JSONObject
 import java.io.IOException
-
-
-
-import android.widget.Toast
-import androidx.appcompat.widget.SearchView
 
 
 class RoomsFragment : Fragment() {
@@ -58,32 +50,27 @@ class RoomsFragment : Fragment() {
             startActivity(mapIntent)
         }
 
-        // Set up RecyclerView
         binding.roomRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.roomRecyclerView.adapter = roomAdapter
 
-        // Fetch the room data from the API
         fetchRooms()
 
-        // Set up search functionality
         binding.searchRoomsView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Filter rooms based on query text
                 filterRooms(newText)
                 return true
             }
         })
     }
 
-    // Function to fetch room data from the API
     private fun fetchRooms() {
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("https://schedulemonitor.onrender.com/rooms") // Your API endpoint
+            .url("https://schedulemonitor.onrender.com/rooms")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -108,11 +95,9 @@ class RoomsFragment : Fragment() {
                             )
                         }
 
-                        // Initially, display all rooms
                         filteredRoomsList.clear()
                         filteredRoomsList.addAll(roomsList)
 
-                        // Update RecyclerView on the main thread
                         activity?.runOnUiThread {
                             roomAdapter.notifyDataSetChanged()
                         }
@@ -124,7 +109,6 @@ class RoomsFragment : Fragment() {
         })
     }
 
-    // Function to filter the rooms based on search query
     private fun filterRooms(query: String?) {
         filteredRoomsList.clear()
         if (query.isNullOrEmpty()) {
@@ -137,7 +121,6 @@ class RoomsFragment : Fragment() {
             }
         }
 
-        // Notify the adapter that the data set has changed
         roomAdapter.notifyDataSetChanged()
     }
 

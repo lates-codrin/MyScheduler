@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.rooms.RoomsFragment">
 
-    <!-- Search Bar -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchRoomsView"
         android:layout_height="wrap_content"
@@ -23,7 +22,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- RecyclerView for Rooms List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/roomRecyclerView"
         android:layout_width="match_parent"
